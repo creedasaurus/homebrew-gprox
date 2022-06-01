@@ -5,38 +5,45 @@
 class Gprox < Formula
   desc "A simple ssl proxy for local development"
   homepage "https://github.com/creedasaurus/gprox"
-  version "0.3.3"
+  version "0.3.4"
   license "MIT"
-  bottle :unneeded
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/creedasaurus/gprox/releases/download/v0.3.3/gprox_0.3.3_darwin_amd64.tar.gz"
-      sha256 "603845a8d3f2d302a49d4e57f7031d928681e619c3cf5feb07e62af528713dde"
-    end
     if Hardware::CPU.arm?
-      url "https://github.com/creedasaurus/gprox/releases/download/v0.3.3/gprox_0.3.3_darwin_arm64.tar.gz"
-      sha256 "450407def13231752db978ca9cde6b07893f98a69ff241ddc98538c620999fca"
+      url "https://github.com/creedasaurus/gprox/releases/download/0.3.4/gprox_0.3.4_darwin_arm64.tar.gz"
+      sha256 "99908f16e7e223d75f8f3f6f2472e91feee1e512dd16d28671b34616d3353520"
+
+      def install
+        bin.install "gprox"
+      end
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/creedasaurus/gprox/releases/download/0.3.4/gprox_0.3.4_darwin_amd64.tar.gz"
+      sha256 "8bb041b033ea6e076699dc97908980accaae90fdc85552df837642dd56f24b7b"
+
+      def install
+        bin.install "gprox"
+      end
     end
   end
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/creedasaurus/gprox/releases/download/v0.3.3/gprox_0.3.3_linux_amd64.tar.gz"
-      sha256 "81c95053686671de5c973ba506907024ba49162d00068bc9f9329f969e59776a"
-    end
-    if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-      url "https://github.com/creedasaurus/gprox/releases/download/v0.3.3/gprox_0.3.3_linux_armv6.tar.gz"
-      sha256 "fe854b1a40aceb8f644eec301c939a0c2b6f96d11222421831cbd7b6ce5e4709"
+      url "https://github.com/creedasaurus/gprox/releases/download/0.3.4/gprox_0.3.4_linux_amd64.tar.gz"
+      sha256 "72f2548560c0fc0c5ddc201b6a30dd2d27198697aa3de2fa174c390988065ad7"
+
+      def install
+        bin.install "gprox"
+      end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/creedasaurus/gprox/releases/download/v0.3.3/gprox_0.3.3_linux_arm64.tar.gz"
-      sha256 "14711839488a2ce1ad62495d54c464fb4e1f68437cce9ae5ab09783128fe8ad7"
-    end
-  end
+      url "https://github.com/creedasaurus/gprox/releases/download/0.3.4/gprox_0.3.4_linux_arm64.tar.gz"
+      sha256 "809cb90c97c6971e5d6d4ecf3b8e1b045fcf98be9f63264e1f9cb15ef463ea37"
 
-  def install
-    bin.install "gprox"
+      def install
+        bin.install "gprox"
+      end
+    end
   end
 
   def caveats; <<~EOS
